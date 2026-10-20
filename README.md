@@ -1,4 +1,4 @@
-School Management System in Python
+# School Management System in Python
 
 This project is a python script for managing school records inside the Terminal. main goal of this project being keeping all data in one place without needing for heavy programs or sql databases. in this system we having 5 main classes: Course, Student, Teacher, Classroom and School.
 
