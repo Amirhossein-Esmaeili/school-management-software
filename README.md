@@ -12,65 +12,139 @@ for saving changes you writing 5 in root menu and save_data method writing all i
 ## Structures
 
 ## 1. Class: Course
+
 Represents an academic course in the system.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `id` | `int` | Unique numerical identifier for the course |
-| `name` | `str` | Name or title of the course |
-| `units` | `int` | Number of course credits or units |
-| `score` | `float` | The student's grade or score achieved in this course |
+### Properties
+| Property | Type | Description | 
+| ----- | ----- | ----- | 
+| `id` | `int` | Unique numerical identifier for the course | 
+| `name` | `str` | Name or title of the course | 
+| `units` | `int` | Number of course credits or units | 
+| `score` | `float` | The student's grade or score achieved in this course | 
+
+### Methods
+| Method | Parameters | Return Type | Description |
+| ----- | ----- | ----- | ----- |
+| `__init__` | `id, name, units` | `None` | Initializes a new `Course` instance |
+| `__eq__` | `other` | `bool` | Compares equality based on course ID |
+| `__str__` | None | `str` | Returns formatted string representation (`id`, `name`, `units`) |
 
 ---
 
 ## 2. Class: Student
+
 Represents a student enrolled in the institution.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `id` | `int` | Unique numerical identifier for the student |
-| `name` | `str` | Student's first name |
-| `family` | `str` | Student's last name |
-| `courses` | `list[Course]` | List of courses taken by the student along with their scores |
+### Properties
+| Property | Type | Description | 
+| ----- | ----- | ----- | 
+| `id` | `int` | Unique numerical identifier for the student | 
+| `name` | `str` | Student's first name | 
+| `family` | `str` | Student's last name | 
+| `courses` | `list[Course]` | List of courses taken by the student along with their scores | 
+
+### Methods
+| Method | Parameters | Return Type | Description |
+| ----- | ----- | ----- | ----- |
+| `__init__` | `id, name, family` | `None` | Initializes a new `Student` instance with an empty courses list |
+| `__eq__` | `other` | `bool` | Compares student equality by object or ID |
+| `__str__` | None | `str` | Returns formatted string representation (`id`, `name`, `family`) |
+| `show_info` | None | `None` | Displays student details and their registered courses with scores |
+| `add_course` | `course` | `None` | Enrolls student in a course if not already enrolled |
+| `remove_course` | `course` | `None` | Removes a registered course from the student's list |
+| `set_score` | None | `None` | Prompts user interactive input to set/update grades for enrolled courses |
 
 ---
 
 ## 3. Class: Teacher
+
 Represents an instructor or teacher.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `id` | `int` | Unique numerical identifier for the teacher |
-| `name` | `str` | Teacher's first name |
-| `family` | `str` | Teacher's last name |
-| `grade` | `str` | Teacher's academic degree, rank, or level |
-| `courses` | `list[Course]` | List of courses the teacher is qualified to teach |
+### Properties
+| Property | Type | Description | 
+| ----- | ----- | ----- | 
+| `id` | `int` | Unique numerical identifier for the teacher | 
+| `name` | `str` | Teacher's first name | 
+| `family` | `str` | Teacher's last name | 
+| `grade` | `str` | Teacher's academic degree, rank, or level | 
+| `courses` | `list[Course]` | List of courses the teacher is qualified to teach | 
+
+### Methods
+| Method | Parameters | Return Type | Description |
+| ----- | ----- | ----- | ----- |
+| `__init__` | `id, name, family, grade` | `None` | Initializes a new `Teacher` instance with an empty courses list |
+| `__eq__` | `other` | `bool` | Compares teacher equality by object or ID |
+| `__str__` | None | `str` | Returns formatted string representation (`id`, `name`, `family`, `grade`) |
+| `show_info` | None | `None` | Displays teacher details and their assigned teaching courses |
+| `add_course` | `course` | `None` | Assigns a new course capability to the teacher |
+| `remove_course` | `course` | `None` | Removes a course assignment from the teacher |
 
 ---
 
 ## 4. Class: Classroom
+
 Represents an active class session linking a course, a teacher, and enrolled students.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `id` | `int` | Unique numerical identifier for the classroom |
-| `name` | `str` | Name or title of the classroom |
-| `course` | `Course` | The course being taught in this classroom |
-| `teacher` | `Teacher` | The teacher assigned to lead this classroom |
-| `students` | `list[Student]` | List of students enrolled in this classroom |
+### Properties
+| Property | Type | Description | 
+| ----- | ----- | ----- | 
+| `id` | `int` | Unique numerical identifier for the classroom | 
+| `name` | `str` | Name or title of the classroom | 
+| `course` | `Course` | The course being taught in this classroom | 
+| `teacher` | `Teacher` | The teacher assigned to lead this classroom | 
+| `students` | `list[Student]` | List of students enrolled in this classroom | 
+
+### Methods
+| Method | Parameters | Return Type | Description |
+| ----- | ----- | ----- | ----- |
+| `__init__` | `id, name` | `None` | Initializes a new `Classroom` instance |
+| `__eq__` | `other` | `bool` | Compares classroom equality by object or ID |
+| `__str__` | None | `str` | Returns summary string (`id`, `name`, course, teacher name, student count) |
+| `show_info` | None | `None` | Displays classroom information including teacher and enrolled students |
+| `change_course` | `all_course` | `None` | Changes class course and filters invalid teacher/students based on new course |
+| `change_teacher` | `all_teacher` | `None` | Assigns a qualified teacher (who teaches the class course) to the class |
+| `add_student` | `all_student` | `None` | Enrolls a student needing retake (score < 10) into the classroom |
+| `remove_student` | None | `None` | Interactively removes a selected student from the classroom |
 
 ---
 
 ## 5. Class: School
-The primary management class handling data storage, JSON operations, and navigation context.
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `name` | `str` | Name of the school or institution |
-| `students` | `list[Student]` | List of all students registered in the school system |
-| `teachers` | `list[Teacher]` | List of all teachers working in the school system |
-| `courses` | `list[Course]` | List of all courses offered by the school |
-| `classrooms` | `list[Classroom]` | List of all classrooms created in the school |
-| `selected_student` | `Student` | The student currently selected in the user session |
-| `selected_teacher` | `Teacher` | The teacher currently selected in the user session |
-| `selected_classroom` | `Classroom` | The classroom currently selected in the user session |
+The primary management class handling CRUD operations, interactive selections, and JSON data persistence.
+
+### Properties
+| Property | Type | Description | 
+| ----- | ----- | ----- | 
+| `name` | `str` | Name of the school or institution | 
+| `students` | `list[Student]` | List of all students registered in the school system | 
+| `teachers` | `list[Teacher]` | List of all teachers working in the school system | 
+| `courses` | `list[Course]` | List of all courses offered by the school | 
+| `classrooms` | `list[Classroom]` | List of all classrooms created in the school | 
+| `selected_student` | `Student` | The student currently selected in the user session | 
+| `selected_teacher` | `Teacher` | The teacher currently selected in the user session | 
+| `selected_classroom` | `Classroom` | The classroom currently selected in the user session | 
+
+### Methods
+| Method | Parameters | Return Type | Description |
+| ----- | ----- | ----- | ----- |
+| `__init__` | `name` | `None` | Initializes school instance with empty entity collections |
+| `add_classroom` | `classroom` | `None` | Adds a new classroom to the school |
+| `add_student` | `student` | `None` | Registers a new student in the system |
+| `add_teacher` | `teacher` | `None` | Registers a new teacher in the system |
+| `add_course` | `course` | `None` | Adds a new course to the curriculum |
+| `remove_student` | `student` | `None` | Removes student if not active in any classroom |
+| `remove_teacher` | `teacher` | `None` | Removes teacher if not assigned to any active classroom |
+| `remove_course` | `course` | `None` | Removes course if not referenced by teachers, students, or classrooms |
+| `remove_classroom` | `classroom_id` | `None` | Deletes a classroom by its ID |
+| `show_students` | None | `None` | Prints list of all registered students |
+| `show_teachers` | None | `None` | Prints list of all registered teachers |
+| `show_courses` | None | `None` | Prints list of all offered courses |
+| `show_classroom` | None | `None` | Prints list of all existing classrooms |
+| `edit_student` | `id, name, family` | `None` | Updates name and family for an existing student |
+| `edit_teacher` | `id, name, family, grade` | `None` | Updates details for an existing teacher |
+| `edit_courses` | `id, name, units` | `None` | Updates title and units for an existing course |
+| `edit_classroom` | `id, name` | `None` | Renames an existing classroom |
+| `select_classroom` | `id` | `None` | Sets the active session classroom by ID |
+| `load_data` | None | `None` | Loads school data from `data4.json` file |
+| `save_data` | None | `None` | Serializes and saves current school state to `data4.json` |
