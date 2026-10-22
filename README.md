@@ -1,5 +1,7 @@
 # School Management System in Python
 
+## introduction
+
 This project is a python script for managing school records inside the Terminal. main goal of this project being keeping all data in one place without needing for heavy programs or sql databases. in this system we having 5 main classes: Course, Student, Teacher, Classroom and School.
 
 
@@ -148,3 +150,17 @@ The primary management class handling CRUD operations, interactive selections, a
 | `select_classroom` | `id` | `None` | Sets the active session classroom by ID |
 | `load_data` | None | `None` | Loads school data from `data4.json` file |
 | `save_data` | None | `None` | Serializes and saves current school state to `data4.json` |
+
+## Structures
+
+### How to use it
+
+When you start the file from the terminal console, the first menu will pop up. Here you can set any number between 0 and 5 to control the entire app. if you then choose number 1 from the menu, it opens course section where you can type to either add a new course name or delete an old ones from the system. but if u want to remove the course that is already assigned to some students or teachers python stops u instantly and prints error message saying that this course is already used so the data connections inside the program can no longer be broken.
+
+It is 2, you directly go into the student menu where you enter student id, first name and last name and then choose from the available list of courses that they study. Then, In 3 you get your teacher menu, almost same thing, where you type in teacher personal info, set their active grade level and then select what courses they teach in school. These are populated in the system memory lists as objects while the program is running.
+
+Classroom is option 4, used as a quick filter to check student performance with fast. One teacher one course, and program will scan entire students in your all student list to show only the ones that got grade under 10 in that course. This feature is very helpful, it immediately shows you which students are failing or might need extra help without having to spend time to manually going through each score here.
+
+
+
+so when you press 5 it runs the save_data function to collect all the IDs, names, courses, teachers, classrooms and scores and dumps them all into a data4.json file in the project directory. Then, any time you run the code in terminal, load_data is automatically executed and reads the data4.json file and restores everything so you will never have to type all the data again from the beginning, every time you want to re-run it. To terminate your console safely, all you have to do is type 0, to close the app.
