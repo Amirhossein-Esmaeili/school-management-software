@@ -159,12 +159,14 @@ When we run the program, the main menu appears in the terminal. It has different
 We can choose an option by entering its number. We can also save our changes or exit the program from this menu.
 #### Main Menu (Root)
 
+```text
 1. Students
 2. Teachers
 3. Courses
 4. Classrooms
 5. Save
 0. Exit
+```
 
 - 1 opens the student menu. Here we can add, edit, delete and select students.
 - 2 opens the teacher menu. We can manage teachers and check the courses they teach.
@@ -174,13 +176,15 @@ We can choose an option by entering its number. We can also save our changes or 
 - 0 closes the program.
 
 #### Student Menu
-
+ 
+ ```text
 1. Show Students
 2. Add Student
 3. Edit Student
 4. Delete Student
 5. Select Student
 0. Back
+```
 
 - 1 prints the list of all students with their information, so we can see who is saved in the program.
 - 2 asks for the student ID, name and family name. Then it uses this information to create a new student.
@@ -191,11 +195,13 @@ We can choose an option by entering its number. We can also save our changes or 
 
 #### Student Submenu
 
+```text
 1. Info
 2. Add Course
 3. Delete Course
 4. Set Scores
 0. Back
+```
 
 - 1 shows the student's full information and the courses they have, including their scores.
 - 2 adds a new course to the student's course list.
