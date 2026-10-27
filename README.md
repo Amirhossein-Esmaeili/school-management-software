@@ -189,7 +189,7 @@ We can choose an option by entering its number. We can also save our changes or 
 - 5 asks for a student ID and opens the submenu for that student. From there, we can check their information and manage their courses and scores.
 - 0 returns to the main menu.
 
-##### Student Submenu
+#### Student Submenu
 
 1. Info
 2. Add Course
