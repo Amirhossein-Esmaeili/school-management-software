@@ -155,12 +155,50 @@ The primary management class handling CRUD operations, interactive selections, a
 
 ### How to use it
 
-When you start the file from the terminal console, the first menu will pop up. Here you can set any number between 0 and 5 to control the entire app. if you then choose number 1 from the menu, it opens course section where you can type to either add a new course name or delete an old ones from the system. but if u want to remove the course that is already assigned to some students or teachers python stops u instantly and prints error message saying that this course is already used so the data connections inside the program can no longer be broken.
+When we run the program, the main menu appears in the terminal. It has different options for managing students, teachers, courses and classrooms.
+We can choose an option by entering its number. We can also save our changes or exit the program from this menu.
+#### Main Menu (Root)
 
-It is 2, you directly go into the student menu where you enter student id, first name and last name and then choose from the available list of courses that they study. Then, In 3 you get your teacher menu, almost same thing, where you type in teacher personal info, set their active grade level and then select what courses they teach in school. These are populated in the system memory lists as objects while the program is running.
+1. Students
+2. Teachers
+3. Courses
+4. Classrooms
+5. Save
+0. Exit
 
-Classroom is option 4, used as a quick filter to check student performance with fast. One teacher one course, and program will scan entire students in your all student list to show only the ones that got grade under 10 in that course. This feature is very helpful, it immediately shows you which students are failing or might need extra help without having to spend time to manually going through each score here.
+- 1 opens the student menu. Here we can add, edit, delete and select students.
+- 2 opens the teacher menu. We can manage teachers and check the courses they teach.
+- 3 opens the course menu. It is used to add new courses, change their information or delete them.
+- 4 opens the classroom menu. Here we can create classrooms and manage their teachers, courses and students.
+- 5 calls `save_data` and saves all changes in the JSON file, so the data can be used again later.
+- 0 closes the program.
 
+#### Student Menu
 
+1. Show Students
+2. Add Student
+3. Edit Student
+4. Delete Student
+5. Select Student
+0. Back
 
-so when you press 5 it runs the save_data function to collect all the IDs, names, courses, teachers, classrooms and scores and dumps them all into a data4.json file in the project directory. Then, any time you run the code in terminal, load_data is automatically executed and reads the data4.json file and restores everything so you will never have to type all the data again from the beginning, every time you want to re-run it. To terminate your console safely, all you have to do is type 0, to close the app.
+- 1 prints the list of all students with their information, so we can see who is saved in the program.
+- 2 asks for the student ID, name and family name. Then it uses this information to create a new student.
+- 3 lets us change the information of a student who is already in the system.
+- 4 deletes a student, but first the program checks if the student is in a classroom. If they are in a classroom, the program does not delete them.
+- 5 asks for a student ID and opens the submenu for that student. From there, we can check their information and manage their courses and scores.
+- 0 returns to the main menu.
+
+##### Student Submenu
+
+1. Info
+2. Add Course
+3. Delete Course
+4. Set Scores
+0. Back
+
+- 1 shows the student's full information and the courses they have, including their scores.
+- 2 adds a new course to the student's course list.
+- 3 removes a course from the student's list when they no longer need that course.
+- 4 lets us enter or change the score for one of the student's courses.
+- 0 returns to the student menu.
